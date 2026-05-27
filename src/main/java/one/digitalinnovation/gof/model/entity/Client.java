@@ -2,7 +2,10 @@ package one.digitalinnovation.gof.model.entity;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,8 +17,7 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id;	
 	private String nome;
 	private String cep;
 	private String logradouro;
@@ -23,7 +25,10 @@ public class Client {
 	private String complemento;
 	private String cidade;
 	private String uf;
-	private String tipoEntrega;
+	
+	@Enumerated(EnumType.STRING)
+    @Column(name = "tipo_entrega")
+	private DeliveryType tipoEntrega;
 	private Double valorEntrega;
 	private Integer prazoDias;
 	
@@ -32,7 +37,7 @@ public class Client {
 	}
 	
 	public Client(Long id, String nome, String cep, String logradouro, String bairro, String complemento,
-			String cidade, String uf, String tipoEntrega, Double valorEntrega, Integer prazoDias) {
+			String cidade, String uf, DeliveryType tipoEntrega, Double valorEntrega, Integer prazoDias) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -111,11 +116,11 @@ public class Client {
 		this.uf = uf;
 	}
 
-	public String getTipoEntrega() {
+	public DeliveryType getTipoEntrega() {
 		return tipoEntrega;
 	}
 
-	public void setTipoEntrega(String tipoEntrega) {
+	public void setTipoEntrega(DeliveryType tipoEntrega) {
 		this.tipoEntrega = tipoEntrega;
 	}
 
