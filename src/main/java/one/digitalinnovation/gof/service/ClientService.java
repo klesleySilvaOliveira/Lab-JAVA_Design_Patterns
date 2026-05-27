@@ -1,7 +1,10 @@
 package one.digitalinnovation.gof.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import one.digitalinnovation.gof.model.dto.ClientResponseDTO;
 import one.digitalinnovation.gof.model.dto.DeliveryDataDTO;
@@ -20,7 +23,13 @@ public class ClientService {
 		return type.getDeliveryStrategy().calculate(uf);
 	}
 	
+	@Transactional(readOnly = true)
 	public ClientResponseDTO searchById(Long id) {
 		return new ClientResponseDTO(repository.findById(id).get());
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<ClientResponseDTO> searchAll(Pageable pageable) {
+		return repository.findAll(pageable).map(x -> new ClientResponseDTO(x));
+	} 
 }
