@@ -1,12 +1,10 @@
 package one.digitalinnovation.gof.model.dto;
 
-import one.digitalinnovation.gof.model.entity.DeliveryType;
-
 public class ClientRequestDTO {
 
 	private String nome;
 	private String cep;
-	private DeliveryType tipoEntrega;
+	private String tipoEntrega;
 	
 	public ClientRequestDTO() {
 		super();
@@ -16,7 +14,7 @@ public class ClientRequestDTO {
 		super();
 		this.nome = nome;
 		this.cep = cep;
-		this.tipoEntrega = DeliveryType.valueOf(tipoEntrega);
+		this.tipoEntrega = tipoEntrega;
 	}
 
 	public String getNome() {
@@ -27,8 +25,13 @@ public class ClientRequestDTO {
 		return cep;
 	}
 
-	public DeliveryType getTipoEntrega() {
+	public String getTipoEntrega() {
 		return tipoEntrega;
+	}
+
+	@Override
+	public String toString() {
+		return "ClientRequestDTO [nome=" + nome + ", cep=" + cep + ", tipoEntrega=" + tipoEntrega + "]";
 	}
 	
 }

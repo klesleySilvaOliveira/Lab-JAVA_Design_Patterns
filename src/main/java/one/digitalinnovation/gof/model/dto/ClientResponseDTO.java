@@ -1,7 +1,6 @@
 package one.digitalinnovation.gof.model.dto;
 
 import one.digitalinnovation.gof.model.entity.Client;
-import one.digitalinnovation.gof.model.entity.DeliveryType;
 
 public class ClientResponseDTO {
 
@@ -13,7 +12,7 @@ public class ClientResponseDTO {
 	private String complemento;
 	private String cidade;
 	private String uf;
-	private DeliveryType tipoEntrega;
+	private String tipoEntrega;
 	private Double valorEntrega;
 	private Integer prazoDias;
 	
@@ -24,7 +23,7 @@ public class ClientResponseDTO {
 
 
 	public ClientResponseDTO(Long id, String nome, String cep, String logradouro, String bairro, String complemento,
-			String cidade, String uf, DeliveryType tipoEntrega, Double valorEntrega, Integer prazoDias) {
+			String cidade, String uf, String tipoEntrega, Double valorEntrega, Integer prazoDias) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -49,7 +48,7 @@ public class ClientResponseDTO {
 		this.complemento = client.getComplemento();
 		this.cidade = client.getCidade();
 		this.uf = client.getUf();
-		this.tipoEntrega = client.getTipoEntrega();
+		this.tipoEntrega = client.getTipoEntrega().name();
 		this.valorEntrega = client.getValorEntrega();
 		this.prazoDias = client.getPrazoDias();
 	}
@@ -95,7 +94,7 @@ public class ClientResponseDTO {
 	}
 
 
-	public DeliveryType getTipoEntrega() {
+	public String getTipoEntrega() {
 		return tipoEntrega;
 	}
 
