@@ -1,6 +1,6 @@
 package one.digitalinnovation.gof.model.dto;
 
-public class ViaCepRequestDTO {
+public class ViaCepResponseDTO {
 
 	private String logradouro;
 	private String complemento;
@@ -8,11 +8,11 @@ public class ViaCepRequestDTO {
 	private String localidade;
 	private String uf;
 	
-	public ViaCepRequestDTO() {
+	public ViaCepResponseDTO() {
 		super();
 	}
 	
-	public ViaCepRequestDTO(String logradouro, String complemento, String bairro, String localidade, String uf) {
+	public ViaCepResponseDTO(String logradouro, String complemento, String bairro, String localidade, String uf) {
 		super();
 		this.logradouro = logradouro;
 		this.complemento = complemento;
